@@ -89,7 +89,7 @@ form.addEventListener('submit', (e) => {
     console.log(response);
   })
   .then((response) => {
-    window.location = 'https://cat-photo.netlify.app/';
+    window.location = 'https://cat-photo-1.netlify.app/';
     const newUserName = JSON.parse(response.username);
     const newUserPassword = JSON.parse(response.password);
     username.value == newUserName;

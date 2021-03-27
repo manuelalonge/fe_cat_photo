@@ -44,7 +44,7 @@ form.addEventListener('submit', (e) => {
       console.log(response);
     })
     .then((response) => {
-      window.location = 'https://cat-photo.netlify.app/landing_page.html';
+      window.location = 'https://cat-photo-1.netlify.app/landing_page.html';
     })
     .catch((error) => {
       console.log('Request failed', error);
