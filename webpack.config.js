@@ -10,9 +10,6 @@ module.exports = {
     index: './src/index.js',
     registration: './src/registration.js',
     landing_page: './src/landing_page.js',
-
-
-
   },
   // https://webpack.js.org/concepts/output/
   output: {

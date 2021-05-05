@@ -1,6 +1,6 @@
 import './styles.scss'
 
-const form = document.querySelector('#index-main__registration__form');
+const registrationForm = document.querySelector('#index-main__registration__form');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -58,7 +58,7 @@ function checkPasswordStrength(input) {
       )} must have alpha-numeric, symbols and upper and lower case characters`
     );
   }
-  console.log("Password ok");
+  console.log('Password ok');
 }
 
 // Get field name
@@ -66,38 +66,39 @@ function getFieldName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
-// Event listeners - Fetch must be tested (24/03/2021), Manuel
-form.addEventListener('submit', (e) => {
+// Event listeners
+registrationForm.addEventListener('submit', (e) => {
+  localStorage.removeItem('id');
+  localStorage.removeItem('username');
   e.preventDefault();
   checkLength(username, 3, 12);
   isValidEmail(email);
   checkPasswordStrength(password);
-  fetch('https://cat-photo.herokuapp.com/signup/',{
+  fetch('https://cat-photo.herokuapp.com/signup/', { 
     method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
+      // 'Authorization': 'TOKEN'
     },
     body: JSON.stringify({
       username: username.value,
       email: email.value,
       password: password.value,
     }),
-  }).then((response) => {
-    return response.json();    
+  })  
+  .then((registrationResponseFromBackend) => {
+    return registrationResponseFromBackend.json();    
   })
-  .then((response) => {
-    console.log(response);
-  })
-  .then((response) => {
-    window.location = 'https://cat-photo-1.netlify.app/';
-    const newUserName = JSON.parse(response.username);
-    const newUserPassword = JSON.parse(response.password);
-    username.value == newUserName;
-    password.value == newUserPassword;
+  .then((registrationResponseJson) => {
+    console.log(registrationResponseJson);
+    return window.location = ('https://cat-photo.netlify.app/'); 
   })
   .catch((error) => {
       console.log('Request failed', error);
   });
   
 });
+
+
+
 

@@ -1,5 +1,4 @@
 import './styles.scss';
-// import './registration.js'
 
 // Login JS
 
@@ -15,37 +14,37 @@ var link = document.querySelector('.login-section__psw-recovery-link');
 
 link.addEventListener('click', toggleInputField);
 
-const form = document.querySelector('#index-main__login__form');
+const loginForm = document.querySelector('#index-main__login__form');
 const username = document.getElementById('username');
 const password = document.getElementById('password');
-const email = document.getElementById('email');
 
 // Event Listener for Login function
-form.addEventListener('submit', (e) => {
+loginForm.addEventListener('submit', (e) => {
+  localStorage.removeItem('token');
   e.preventDefault();
-  /* checkLength(username, 3, 12);
-  isValidEmail(email);
-  checkPasswordStrength(password); */  
-  fetch('https://cat-photo.herokuapp.com/login/', {
+  fetch('https://cat-photo.herokuapp.com/login/', { 
     method: 'post',  
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
+      //'Authorization': 'Token'
     },
     body: JSON.stringify({
       username: username.value,
-      email: email.value,
       password: password.value,
     }),
   })
-    .then((response) => {
-      return response.json();
+    .then((loginResponseFromBackend) => {
+      console.log(loginResponseFromBackend);
+      return loginResponseFromBackend.json();
     })
-    .then((response) => {
-      console.log(response);
-    })
-    .then((response) => {
-      window.location = 'https://cat-photo-1.netlify.app/landing_page.html';
-    })
+    .then((loginResponseToCreateToken) => {
+      console.log(loginResponseToCreateToken);
+      return localStorage.setItem('token', loginResponseToCreateToken.token);
+    })    
+     .then((loginResponseForRedirect) => {
+      console.log(loginResponseForRedirect);
+      window.location.href = 'landing_page.html';
+    })  
     .catch((error) => {
       console.log('Request failed', error);
     });

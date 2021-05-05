@@ -7,60 +7,60 @@
 }
 
 .index-main__jumbotron {
-
-    width: 308px;
-    height: 124px;
-    margin-bottom: 700px;
-    &__title {
-        @include fontRoboto24px;
-        text-align: center;
-        font-size: 32px;
-        width: 100vw;
-        margin-bottom: 40px;
-        color: $primary-color;
-    }
-    &__title__span {
-        @include fontAnton;
-    }
-
+  width: 308px;
+  height: 124px;
+  margin-bottom: 700px;
+  &__title {
+    @include fontRoboto24px;
+    text-align: center;
+    font-size: 32px;
+    width: 100vw;
+    margin-bottom: 40px;
+    color: $primary-color;
+  }
+  &__title__span {
+    @include fontAnton;
+  }
 }
 
 .index-main__login {
-
-    width: 318.92px;
-    height: 488px;
-    &__title {
-        @include fontAnton;
-        @include whiteAlignCenter;
-        margin-bottom: -20px;
-    }
-    &__subtitle {
-        @include fontRoboto24px;
-        @include whiteAlignCenter;
-        margin-bottom: 40px;
-    }
-    &__form {
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(152.97deg, rgba(255, 255, 255, 0.36) 14.91%, rgba(255, 255, 255, 0) 114.91%);
-        align-items: center;
-    }
-    &__form__field {
-        @include inputField;
-    }
-    &__form__label {
-        @include fontRoboto18px;
-        margin: -10px auto 10px auto;
-    }
-    &__form__button {
-        font-size: 18px;
-        width: 150px;
-        height: 40px;
-        margin-bottom: 40px;
-        color: $primary-color;
-        @include btnBgColor;
-    }
-
+  width: 318.92px;
+  height: 488px;
+  &__title {
+    @include fontAnton;
+    @include whiteAlignCenter;
+    margin-bottom: -20px;
+  }
+  &__subtitle {
+    @include fontRoboto24px;
+    @include whiteAlignCenter;
+    margin-bottom: 40px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+      152.97deg,
+      rgba(255, 255, 255, 0.36) 14.91%,
+      rgba(255, 255, 255, 0) 114.91%
+    );
+    align-items: center;
+  }
+  &__form__field {
+    @include inputField;
+  }
+  &__form__label {
+    @include fontRoboto18px;
+    margin: -10px auto 10px auto;
+  }
+  &__form__button {
+    font-size: 18px;
+    width: 150px;
+    height: 40px;
+    margin-bottom: 40px;
+    color: $primary-color;
+    @include btnBgColor;
+  }
 }
 
 .index-footer {
@@ -82,4 +82,25 @@
   text-align: center;
   font-size: 18px;
   outline: none;
+}
+
+.login-username,
+.login-password {
+  margin-bottom: 20px;
+  height: 40px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.67);
+  text-align: center;
+  font-size: 18px;
+  outline: none;
+}
+.index-main__login__form__button {
+  font-weight: bold;
+}
+.index-main__jumbotron__title {
+  span {
+    font-weight: 900;
+    font-family: Anton;
+  }
 }
